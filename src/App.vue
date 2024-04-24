@@ -1,20 +1,29 @@
 <template>
+  <!-- 
+    1、路由组件一般存放在pages/views文件夹，一般组件存放在components文件夹
+    2、通过点击导航栏，视觉上消失了的路由组件，默认是被卸载了的，需要的时候再去挂载
+
+   -->
   <div class="app">
-    <h2 class="title">vue路由测试</h2>
+    <Header/>
     <!-- 导航 -->
     <div class="navigate">
-      <a href="#" class="active">首页</a>
-      <a href="#">新闻</a>
-      <a href="#">关于</a>
+      <!-- to的两种写法，第一：字符串，第二：对象写法 :to={path:'path'}
+            命名路由
+      -->
+      <RouterLink :to="{path:'/home'}" active-class="active">首页</RouterLink>
+      <RouterLink :to="{path:'/news'}" active-class="active">新闻</RouterLink>
+      <RouterLink :to="{name:'about'}" active-class="active">关于</RouterLink>
     </div>
     <!-- 展示 -->
     <div class="main-content">
-      此处以后展示各种组件，需要看路径
+      <RouterView></RouterView>
     </div>
   </div>
 </template>  
-<script>
-
+<script setup name="App" lang="ts">
+  import { RouterLink,RouterView } from "vue-router";
+  import   Header  from "./components/Header.vue";
 </script>
 
 
